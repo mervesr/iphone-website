@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <button (click)="AddItem2(accessoriesForm)">Add</button>
+    </div>
+    <div class="col-md-4">
+      <button (click)="DeleteAccessory(selectedAccessory, selectedAccessory.id)">
+        Delete
+      </button>
+    </div>
+    <div class="col-md-4">
+      <button
+        (click)="
+          UpdateItem(selectedAccessory, accessoriesForm, selectedAccessory.name)
+        "
+      >
+        Update
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form
+        [formGroup]="accessoriesForm"
+        (ngSubmit)="
+          UpdateItem(selectedAccessory, accessoriesForm, selectedAccessory.name)
+        "
+        *ngIf="selectedAccessory != null"
+      >
+        <label>name: </label>
+        <input
+          placeholder="name"
+          formControlName="name"
+          [(ngModel)]="selectedAccessory.name"
+        />
+        <label>price: </label>
+        <input
+          placeholder="price"
+          formControlName="price"
+          [(ngModel)]="selectedAccessory.price"
+        />
+        <label>image: </label>
+        <input
+          placeholder="image"
+          formControlName="image"
+          [(ngModel)]="selectedAccessory.image"
+        />
+      </form>
+
+      <form
+        [formGroup]="accessoriesForm"
+        
+        *ngIf="selectedAccessory == null"
+      >
+        <label>name: </label>
+        <input placeholder="name" formControlName="name" />
+        <label>price: </label>
+        <input placeholder="price" formControlName="price" />
+        <label>image: </label>
+        <input placeholder="image" formControlName="image" />
+      </form>
+    </div>
+  </div>
+  <div class="iphone-part">
+    
+    
+    <div class="row">
+      <div
+        class="col-md-4"
+        *ngFor="let accessories of backendAccessories"
+        (click)="onSelect(accessories)"
+      >
+        <div class="box" [class.selected]="accessories === selectedAccessory">
+          <div class="image">
+            <img class="img-fluid" src="{{ accessories.image }}" />
+          </div>
+          <div class="informations">
+            <h4>Name: {{ accessories.name }}</h4>
+            <p>Price: {{ accessories.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <button (click)="AddItem(iphoneForm)">Add</button>
+    </div>
+    <div class="col-md-4">
+      <button (click)="DeleteItem(selectedIphone, selectedIphone.name)">
+        Delete
+      </button>
+    </div>
+    <div class="col-md-4">
+      <button
+        (click)="UpdateItem(selectedIphone, iphoneForm, selectedIphone.name)"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form
+        [formGroup]="iphoneForm"
+        (ngSubmit)="UpdateItem(selectedIphone, iphoneForm, selectedIphone.name)"
+        *ngIf="selectedIphone != null"
+      >
+        <label
+          >name:
+          <input placeholder="name" formControlName="name" [(ngModel)]="selectedIphone.name"/>
+        </label>
+        <label
+          >price:
+          <input placeholder="price" formControlName="price" [(ngModel)]="selectedIphone.price"/>
+        </label>
+        <label
+          >image:
+          <input placeholder="image" formControlName="image" [(ngModel)]="selectedIphone.image"/>
+        </label>
+        <label
+          >description:
+          <input placeholder="description" formControlName="description" [(ngModel)]="selectedIphone.description"/>
+        </label>
+        <label
+          >model:
+          <input placeholder="model" formControlName="model" [(ngModel)]="selectedIphone.model"/>
+        </label>
+        <label
+          >sku:
+          <input placeholder="sku" formControlName="sku" [(ngModel)]="selectedIphone.sku"/>
+        </label>
+        <label
+          >screensize:
+          <input placeholder="screensize" formControlName="screensize" [(ngModel)]="selectedIphone.screensize"/>
+        </label>
+        <label
+          >color:
+          <input placeholder="color" formControlName="color" [(ngModel)]="selectedIphone.color"/>
+        </label>
+      </form>
+
+      <form
+        [formGroup]="iphoneForm"
+        (ngSubmit)="AddItem(iphoneForm)"
+        *ngIf="selectedIphone == null"
+      >
+        <label
+          >name:
+          <input placeholder="name" formControlName="name" />
+        </label>
+        <label
+          >price:
+          <input placeholder="price" formControlName="price" />
+        </label>
+        <label
+          >image:
+          <input placeholder="image" formControlName="image" />
+        </label>
+        <label
+          >description:
+          <input placeholder="description" formControlName="description" />
+        </label>
+        <label
+          >model:
+          <input placeholder="model" formControlName="model" />
+        </label>
+        <label
+          >sku:
+          <input placeholder="sku" formControlName="sku" />
+        </label>
+        <label
+          >screensize:
+          <input placeholder="screensize" formControlName="screensize" />
+        </label>
+        <label
+          >color:
+          <input placeholder="color" formControlName="color" />
+        </label>
+      </form>
+    </div>
+  </div>
+  <div class="iphone-part">
+    <div class="row">
+      <div
+        class="col-md-4"
+        *ngFor="let iphoneList of iphones"
+        (click)="onSelect(iphoneList)"
+      >
+        <div class="box" [class.selected]="iphoneList === selectedIphone">
+          <div class="image">
+            <img class="img-fluid" src="{{ iphoneList.image }}" />
+          </div>
+          <div class="informations">
+            <h4>Name: {{ iphoneList.name }}</h4>
+            <p>Price: {{ iphoneList.price }}</p>
+          </div>
+          <div>
+            <p>Color: {{ iphoneList.color }}</p>
+            <p>Screensize: {{ iphoneList.screensize }}</p>
+            <p>Model: {{ iphoneList.model }}</p>
+            <p>Description: {{ iphoneList.description }}</p>
+            <p>sku: {{ iphoneList.sku }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="iphone-part">
+    <div class="row">
+      <div
+        class="col-md-4"
+        *ngFor="let iphoneList of iphones"
+        (click)="onSelect(iphoneList)"
+      >
+        <div class="box" [class.selected]="iphoneList === selectedIphone">
+          <div class="image">
+            <img class="img-fluid" src="{{ iphoneList.image }}" />
+          </div>
+          <div class="informations">
+            <h4>Name: {{ iphoneList.name }}</h4>
+            <p>Price: {{ iphoneList.price }}</p>
+          </div>
+          <div>
+            <p>Color: {{ iphoneList.color }}</p>
+            <p>Screensize: {{ iphoneList.screensize }}</p>
+            <p>Model: {{ iphoneList.model }}</p>
+            <p>Description: {{ iphoneList.description }}</p>
+            <p>sku: {{ iphoneList.sku }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-md-4"
+        *ngFor="let accessories of backendAccessories"
+        (click)="onSelectAccessory(accessories)"
+      >
+        <div class="box" [class.selected]="accessories === selectedAccessory">
+          <div class="image">
+            <img class="img-fluid" src="{{ accessories.image }}" />
+          </div>
+          <div class="informations">
+            <h4>Name: {{ accessories.name }}</h4>
+            <p>Price: {{ accessories.price | currency}}  </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button (click)="calculate(selectedIphone, selectedAccessory)">Calculate</button>
+      </div>
+      <div class="col-md-12">
+        {{offer}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.box {
+  background-color: #fafcd1;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.informations {
+  display: flex;
+  align-items: center;
+}
+
+.informations p {
+  margin: auto;
+  float: right;
+}
+img {
+  max-width: 80%;
+}

@@ -1,0 +1,40 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/auth" routerLinkActive="active" *ngIf="!isAuthenticated">Auth</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="onLogout()"  *ngIf="isAuthenticated">Logout</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/iphone" routerLinkActive="active" *ngIf="isAuthenticated"
+            >Iphone <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/accessorizes" routerLinkActive="active" *ngIf="isAuthenticated">Accessories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin-panel" routerLinkActive="active">Card</a>
+        </li>
+        
+      </ul>
+
+    </div>
+  </nav>
+</header>
