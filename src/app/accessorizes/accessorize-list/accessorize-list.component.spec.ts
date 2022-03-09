@@ -1,25 +1,34 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthService } from 'src/app/services/auth.service';
 import { AccessorizeListComponent } from './accessorize-list.component';
 
+class MockUserService {
+  isLoggedIn = true;
+  user = { email: 'hi@gmail.com', password: 'merhaba'};
+}
+
 describe('AccessorizeListComponent', () => {
-  let component: AccessorizeListComponent;
-  let fixture: ComponentFixture<AccessorizeListComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AccessorizeListComponent ]
-    })
-    .compileComponents();
-  });
-
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccessorizeListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      declarations: [AccessorizeListComponent],
+      providers: [
+        AccessorizeListComponent,
+        { provide: AuthService, useClass: MockUserService }
+      ],
+
+    });
+    
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should create the app', () => {
+    let fixture = TestBed.createComponent(AccessorizeListComponent);
+    let app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  })
+
+  it('should use the user name from the authservice', () => {
+    let fixture = TestBed.createComponent(AccessorizeListComponent);
+    let app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  })
 });
