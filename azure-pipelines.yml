@@ -32,4 +32,4 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: 'testresults/junit/*.xml'
+    testResultsFiles: '**/*test*.xml'
