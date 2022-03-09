@@ -1,5 +1,6 @@
 # Node.js with Angular
 
+
 # Build a Node.js project that uses Angular.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -27,3 +28,8 @@ steps:
     api_location: 'api'
     output_location: 'dist/angular-training'
     azure_static_web_apps_api_token: $(deployment_token)
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
